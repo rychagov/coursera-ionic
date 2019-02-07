@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DishProvider } from '../providers/dish/dish';
 import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
+import { FavoriteProvider } from '../providers/favorite/favorite';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 
 import { baseURL } from '../shared/baseurl';
@@ -49,8 +50,9 @@ import { baseURL } from '../shared/baseurl';
     DishProvider,
     LeaderProvider,
     PromotionProvider,
+    FavoriteProvider,
     ProcessHttpmsgProvider,
-    { provide: 'BaseURL', useValue: baseURL }
+    { provide: 'BaseURL', useValue: baseURL },
   ]
 })
 export class AppModule {}
