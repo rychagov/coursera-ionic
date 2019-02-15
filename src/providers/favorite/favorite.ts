@@ -4,6 +4,7 @@ import { Dish } from '../../shared/dish';
 import { Observable } from 'rxjs/Observable';
 import { DishProvider } from '../dish/dish';
 
+@Injectable()
 export class FavoriteProvider {
 
   favorites: Array<any>;

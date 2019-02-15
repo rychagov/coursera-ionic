@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Leader } from '../../shared/leader';
 import { LeaderProvider } from '../../providers/leader/leader';
-import {Dish} from "../../shared/dish";
 
 /**
  * Generated class for the AboutPage page.
