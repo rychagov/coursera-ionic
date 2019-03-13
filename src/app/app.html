@@ -14,6 +14,10 @@
           </ion-thumbnail>
           <h3>Ristorante Con Fusion</h3>
         </ion-list-header>
+        <button color="primary-pale" menuClose ion-item (click)="openLogin()">
+          <ion-icon name="log-in" item-left></ion-icon>
+          Login
+        </button>
         <button color="primary-pale" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
           <ion-icon [name]="p.icon" item-left></ion-icon>
           {{p.title}}
