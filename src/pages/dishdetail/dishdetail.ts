@@ -43,11 +43,6 @@ export class DishdetailPage {
     let total = 0;
     this.dish.comments.forEach(comment => total += comment.rating );
     this.avgstars = (total/this.numcomments).toFixed(2);
-
-    this.toastCtrl.create({
-      message: 'Dish ' + this.dish.id + ' added as favorite successfully',
-      position: 'middle',
-      duration: 3000}).present();
   }
 
   ionViewDidLoad() {
@@ -57,6 +52,10 @@ export class DishdetailPage {
   addToFavorites() {
     console.log('Adding to Favorites', this.dish.id);
     this.favorite = this.favoriteservice.addFavorite(this.dish.id);
+    this.toastCtrl.create({
+      message: 'Dish ' + this.dish.id + ' added as favorite successfully',
+      position: 'middle',
+      duration: 3000}).present();
   }
 
   openCommentModal() {
