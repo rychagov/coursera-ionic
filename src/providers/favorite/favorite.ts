@@ -1,6 +1,7 @@
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Dish } from '../../shared/dish';
 import { Observable } from 'rxjs/Observable';
 import { DishProvider } from '../dish/dish';
@@ -12,7 +13,8 @@ export class FavoriteProvider {
 
   constructor(public http: Http,
               private dishservice: DishProvider,
-              private storage: Storage) {
+              private storage: Storage,
+              private localNotifications: LocalNotifications) {
     storage.get('favorites').then(favorites => {
       this.favorites = favorites || [];
     });
@@ -23,6 +25,13 @@ export class FavoriteProvider {
       this.favorites.push(id);
 
     this.saveFavorites();
+
+    // Schedule a single notification
+    this.localNotifications.schedule({
+      id: id,
+      text: 'Dish ' + id + ' added as a favorite successfully'
+    });
+
     return true;
   }
 
