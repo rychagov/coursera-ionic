@@ -45,7 +45,28 @@ export class RegisterPage {
   }
 
   getPicture() {
-    const options: CameraOptions = {
+    const options = this.getCameraOptions(this.camera.PictureSourceType.CAMERA);
+    this.camera.getPicture(options).then((imageData) => {
+      this.image = imageData;
+      console.log(imageData);
+    }, (err) => {
+      console.log('Error obtaining picture')
+    });
+  }
+
+  getFromLibrary() {
+    const options = this.getCameraOptions(this.camera.PictureSourceType.PHOTOLIBRARY);
+    this.camera.getPicture(options).then((imageData) => {
+      this.image = imageData;
+      console.log(imageData);
+    }, (err) => {
+      console.log('Error obtaining picture')
+    });
+  }
+
+  getCameraOptions(sourceType) {
+    return {
+      sourceType: sourceType,
       quality: 100,
       targetHeight: 100,
       targetWidth: 100,
@@ -56,14 +77,6 @@ export class RegisterPage {
       mediaType: this.camera.MediaType.PICTURE,
       cameraDirection: this.camera.Direction.FRONT
     };
-
-    this.camera.getPicture(options).then((imageData) => {
-
-      this.image = imageData;
-      console.log(imageData);
-    }, (err) => {
-      console.log('Error obtaining picture')
-    });
   }
 
   onSubmit() {
